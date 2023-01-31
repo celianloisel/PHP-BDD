@@ -1,10 +1,10 @@
-<?php
+<?php 
 
 $config = [];
 $config['db'] = [
-    'name' => 'bank',
-    'host' => 'localhost',
-    'port' => 8809,
-    'user' => 'root',
-    'pass' => ''
+	'name' => 'bank',
+	'host' => '127.0.0.1',
+	'port' => 8889,
+	'user' => 'root',
+	'pass' => 'root'
 ];

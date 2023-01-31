@@ -1,6 +1,6 @@
 <?php
 
-class DBManager
+class DbManager
 {
     private $db;
 
