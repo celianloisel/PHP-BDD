@@ -19,25 +19,15 @@ $loggedin_pages = ['home']; // or here
 // pages that everyone can see connected or not
 $everyone_pages = []; // or here !
 
-if ($user_id === false) {
-    $pageName = 'login';
-} else {
-    $pageName = 'home';
-}
-
 if (isset($_GET['name'])) {
-    if ($user_id !== false && in_array($_GET['name'], $loggedin_pages)) {
+    if ($user_id === false && $_GET['name'] == 'login') {
+        $pageName = 'login';
+    } elseif ($user_id === false && $_GET['name'] == 'register') {
+        $pageName = 'register';
+    } elseif ($user_id !== false && in_array($_GET['name'], $loggedin_pages)) {
         $pageName = $_GET["name"];
     } elseif ($user_id === false && in_array($_GET['name'], $guest_pages)) {
         $pageName = $_GET['name'];
-    } else {
-        $pageName = '404';
-    }
-} else {
-    if ($user_id === false) {
-        $pageName = 'login';
-    } else {
-        $pageName = 'home';
     }
 }
 
