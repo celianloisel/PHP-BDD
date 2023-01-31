@@ -1093,3 +1093,4 @@ FodyWeavers.xsd
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,windows,linux,phpstorm,visualstudio,visualstudiocode,intellij,intellij+all,intellij+iml,git,jetbrains,jetbrains+iml,jetbrains+all,phpstorm+iml,phpstorm+all
+src/config.php
