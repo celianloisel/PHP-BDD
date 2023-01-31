@@ -32,6 +32,6 @@ $current_date = date('d-m-y');
 $query = $db->prepare("INSERT INTO users (firstname, lastname, email, password, status, register_date, login_date) VALUES(" ."'" .$_POST['firstname'] ."','" . $_POST['lastname'] ."','" . $_POST['email'] ."','" .  $_POST['password'] ."','" . 1   ."','" . $current_date ."','" . $current_date . "')");
 $query->execute();
 
-$_SESSION['user_id'] = $db->lastInsertId();
+/* $_SESSION['user_id'] = $db->lastInsertId(); */
 
 header('Location: /index.php?name=login');

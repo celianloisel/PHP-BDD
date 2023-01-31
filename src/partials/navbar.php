@@ -5,6 +5,9 @@
             <a href="?name=home">Home</a>
         </li>
         <li>
+            <a href="?name=manage">Manage</a>
+        </li>
+        <li>
             <form action="/../actions/logout.php" method="post">
                 <input type="submit" value="Log Out">
             </form>
