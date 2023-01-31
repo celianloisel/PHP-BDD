@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 31 jan. 2023 à 14:08
+-- Généré le : mar. 31 jan. 2023 à 14:40
 -- Version du serveur : 5.7.36
 -- Version de PHP : 7.4.26
 
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `transactions` (
   `user_id` int(11) NOT NULL,
   `value` float NOT NULL,
   `currencies_id` int(11) NOT NULL,
-  `recipient_id` int(11) NOT NULL,
+  `type` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
