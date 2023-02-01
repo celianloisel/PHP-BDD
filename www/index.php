@@ -15,17 +15,13 @@ $pageTitles = [
 $guest_pages = ['login', 'register']; // add new pages here
 
 // if we are connected
-$loggedin_pages = ['home','manage']; // or here
+$loggedin_pages = ['home', 'manage']; // or here
 
 // pages that everyone can see connected or not
 $everyone_pages = []; // or here !
 
 if (isset($_GET['name'])) {
-    if ($user_id === false && $_GET['name'] == 'login') {
-        $pageName = 'login';
-    } elseif ($user_id === false && $_GET['name'] == 'register') {
-        $pageName = 'register';
-    } elseif ($user_id !== false && in_array($_GET['name'], $loggedin_pages)) {
+    if ($user_id !== false && in_array($_GET['name'], $loggedin_pages)) {
         $pageName = $_GET["name"];
     } elseif ($user_id === false && in_array($_GET['name'], $guest_pages)) {
         $pageName = $_GET['name'];
@@ -33,19 +29,21 @@ if (isset($_GET['name'])) {
 }
 
 $page_title = $pageTitles[$pageName];
+?>
 
-// ! WARNING only the HTML header not the header of the body ! */
-require_once __DIR__ . '/../src/partials/header.php'; ?>
+<html lang="fr">
+
+<?php require_once __DIR__ . '/../src/partials/head.php'; ?>
 
 <body>
-    <!-- navbar -->
-    <?php require_once __DIR__ . '/../src/partials/navbar.php'; ?>
+<!-- navbar -->
+<?php require_once __DIR__ . '/../src/partials/navbar.php'; ?>
 
-    <!-- page content -->
-    <?php require_once __DIR__ . '/../src/pages/' . $pageName . '.php'; ?>
+<!-- page content -->
+<?php require_once __DIR__ . '/../src/pages/' . $pageName . '.php'; ?>
 
-    <!-- footer -->
-    <?php require_once __DIR__ . '/../src/partials/footer.php'; ?>
+<!-- footer -->
+<?php require_once __DIR__ . '/../src/partials/footer.php'; ?>
 </body>
 
 </html>

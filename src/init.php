@@ -10,8 +10,6 @@ require_once __DIR__ . '/class/Users.php';
 
 require_once __DIR__ . '/class/DbManager.php';
 
-$dbManager = new DbManager($db);
-
 require_once __DIR__ . '/utils/errors.php';
 require_once __DIR__ . '/utils/auth.php';
 
