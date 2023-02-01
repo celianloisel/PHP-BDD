@@ -24,7 +24,7 @@ if (isset($_GET['name'])) {
         $pageName = 'login';
     } elseif ($user_id === false && $_GET['name'] == 'register') {
         $pageName = 'register';
-    } elseif ($user_id !== false && in_array($_GET['name'], $loggedin_pages)) {
+    } elseif ($user_id !== false  && in_array($_GET['name'], $loggedin_pages)) {
         $pageName = $_GET["name"];
     } elseif ($user_id === false && in_array($_GET['name'], $guest_pages)) {
         $pageName = $_GET['name'];

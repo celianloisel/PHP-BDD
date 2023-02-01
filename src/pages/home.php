@@ -1,2 +1,11 @@
 <h1>Welcome on the home page !!</h1>
-<?= $_SESSION['user_id'] ?>
+<?php 
+if ($role['status'] > 0) {
+   echo "test";
+}
+var_dump($role['status'])
+ 
+
+?>
+
+

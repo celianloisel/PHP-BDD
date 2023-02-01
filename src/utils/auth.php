@@ -17,3 +17,5 @@ function get_user_by_id($id) {
 	$user = $query->fetch();
 	return $user;
 }
+$role=$dbManager->getById_basic('users', $_SESSION['user_id']);
+

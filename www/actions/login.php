@@ -25,6 +25,7 @@ if ($user['password'] !== $password) {
 	set_errors('Mauvais mot de passe', '/index.php?name=login');
 }else{
     $_SESSION['user_id'] = $user['id'];
+	
     header('Location: /index.php?name=home');
 }
 
