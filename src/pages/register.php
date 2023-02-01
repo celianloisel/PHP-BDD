@@ -9,6 +9,10 @@
     <label for="email">Email :</label>
     <input type="email" name="email" id="email">
 
+    <label for="number_phone">Number-phone :</label>
+    <input type="number" name="number_phone" id="email">
+
+
     <label for="password">Password :</label>
     <input type="password" name="password" id="password">
     <label for="cpassword">Confirm Password :</label>

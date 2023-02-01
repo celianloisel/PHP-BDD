@@ -1,20 +1,21 @@
 <?php
 require_once __DIR__ . '/../src/init.php';
 
-// ! if you made a new page, add his title here and in the arrays !!!
+// ! if you made a new page, add his title here and in the arrays and in the navbar !!!
 $pageTitles = [
     'login' => 'Login',
     'register' => 'Register',
     'home' => 'Home',
     'contact' => 'Contact Us',
-    '404' => 'Error 404'
+    '404' => 'Error 404',
+    'manage' => 'Manage Users'
 ];
 
 // if we are not connected
 $guest_pages = ['login', 'register']; // add new pages here
 
 // if we are connected
-$loggedin_pages = ['home']; // or here
+$loggedin_pages = ['home','manage']; // or here
 
 // pages that everyone can see connected or not
 $everyone_pages = []; // or here !
