@@ -18,13 +18,9 @@ define("ROLE_USER_VERIFIED", 10);
 define("ROLE_USER_BANNED", 0);
 
 
-require_once "config.php";
-
 function checkRole($userRole, $requiredRole) {
   return $userRole >= $requiredRole;
 }
-
-require_once "config.php";
 
 // Connexion à la base de données
 $host = "localhost";
@@ -33,7 +29,7 @@ $username = "root";
 $password = "root";
 $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 
-// Récupération du rôle de l'utilisateur à partir de la table `users`
+// Récupération du rôle de l'utilisateur à partir de la table users
 $stmt = $pdo->prepare("SELECT role FROM users WHERE username = :username");
 $stmt->execute(array(":username" => "bob"));
 $userRole = $stmt->fetchColumn();
@@ -44,20 +40,9 @@ if (checkRole($userRole, ROLE_ADMIN)) {
   echo "Bienvenue l'utilisateur";
 } else {
   // L'utilisateur n'a pas les autorisations d'un administrateur
-  echo "Votre accès estgits refusé";
+  echo "Votre accès est refusé";
 }
 
-// Vérification du rôle de l'utilisateur
-// function checkRole($userRole, $requiredRole) {
-//   return $userRole >= $requiredRole;
-// }
 
-// // Exemple d'utilisation pour vérifier si l'utilisateur est un administrateur
-// $userRole = ROLE_ADMIN;
-// if (checkRole($userRole, ROLE_ADMIN)) {
-//   // L'utilisateur a les autorisations d'un administrateur
-// } else {
-//   // L'utilisateur n'a pas les autorisations d'un administrateur
-// }
 
 ?>
