@@ -10,39 +10,6 @@ $config['db'] = [
 ];
 
 
-// Fichier de configuration pour les rôles
-define("ROLE_ADMIN", 1000);
-define("ROLE_MANAGER", 200);
-define("ROLE_USER_UNVERIFIED", 1);
-define("ROLE_USER_VERIFIED", 10);
-define("ROLE_USER_BANNED", 0);
-
-
-function checkRole($userRole, $requiredRole) {
-  return $userRole >= $requiredRole;
-}
-
-// Connexion à la base de données
-$host = "localhost";
-$dbname = "bank";
-$username = "root";
-$password = "root";
-$pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-
-// Récupération du rôle de l'utilisateur à partir de la table users
-$stmt = $pdo->prepare("SELECT role FROM users WHERE username = :username");
-$stmt->execute(array(":username" => "bob"));
-$userRole = $stmt->fetchColumn();
-
-// Vérification du rôle de l'utilisateur
-if (checkRole($userRole, ROLE_ADMIN)) {
-  // L'utilisateur a les autorisations d'un administrateur
-  echo "Bienvenue l'utilisateur";
-} else {
-  // L'utilisateur n'a pas les autorisations d'un administrateur
-  echo "Votre accès est refusé";
-}
-
 
 
 ?>
