@@ -11,8 +11,9 @@
             <p><?= $user['lastname'] ?> </p>      
         </div>
         <div>
-            <button>Accept</button>
-            <button>Denied</button>
+            <form action="/actions/accept.php">
+                <input type="submit" value="Accept">
+            </form>
         </div>
     </section>
 <?php endforeach; ?>
