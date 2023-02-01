@@ -29,8 +29,22 @@ unset($_POST['cpassword']);
 $current_date = date('d-m-y');
 
 // TODO setup with dbmanager
-$query = $db->prepare("INSERT INTO users (firstname, lastname, email, password, status, register_date, login_date) VALUES(" ."'" .$_POST['firstname'] ."','" . $_POST['lastname'] ."','" . $_POST['email'] ."','" .  $_POST['password'] ."','" . 1   ."','" . $current_date ."','" . $current_date . "')");
-$query->execute();
+/* $query = $db->prepare("INSERT INTO users (firstname, lastname, email, password, status) VALUES(" ."'" .$_POST['firstname'] ."','" . $_POST['lastname'] ."','" . $_POST['email'] ."','" .  $_POST['password'] ."','" . 1   ."')");
+$query->execute(); */
+
+$dbmanager = new DbManager($db);
+
+$newUser = new Users();
+$newUser -> setFirstname($_POST['firstname']);
+$newUser -> setLastname($_POST['lastname']);
+$newUser -> setEmail($_POST['email']);
+$newUser -> setNumber_phone($_POST['number_phone']);
+$newUser -> setPassword($_POST['password']);
+$newUser -> setStatus(1);
+
+$dbmanager ->insert($newUser);
+
+
 
 /* $_SESSION['user_id'] = $db->lastInsertId(); */
 
