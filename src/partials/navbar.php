@@ -18,5 +18,18 @@
             <a href="?name=login">Login</a>
         </li>
         <?php } ?>
+        <?php
+        if($user_id !== false){ 
+            if ($role['status'] > 1){ ?>
+            <li>
+                <a href="?name=transactions">Transactions</a>
+            </li>
+        <?php }
+           
+        }
+             ?>
+            
+
+
     </ul>
 </nav>

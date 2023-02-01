@@ -1,9 +1,12 @@
 <h1>Welcome on the home page !!</h1>
 <?php 
-if ($role['status'] > 0) {
-   echo "test";
+if ($role['status'] > 1) { 
+   echo "Bonjour ".$role['firstname']." Votre compte est bien vérifié";
 }
-var_dump($role['status'])
+else {
+    echo "Bonjour ".$role['firstname']." Votre compte n'est pas vérifié"; 
+}
+
  
 
 ?>
