@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 31 jan. 2023 à 14:40
+-- Généré le : mer. 01 fév. 2023 à 14:10
 -- Version du serveur : 5.7.36
 -- Version de PHP : 7.4.26
 
@@ -91,12 +91,20 @@ CREATE TABLE IF NOT EXISTS `users` (
   `firstname` varchar(100) NOT NULL,
   `lastname` varchar(100) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `number_phone` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
   `status` int(11) NOT NULL,
-  `register_date` datetime NOT NULL,
-  `login_date` datetime NOT NULL,
+  `register_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `login_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `number_phone`, `password`, `status`, `register_date`, `login_date`) VALUES
+(3, 'Celian', 'Loisel', 'celianloisel@gmail.com', '0661804927', '94e7d3e1e649e684987228c65a30f14dc39be614b9560a487564efbf79022554', 1, '2023-02-01 15:08:26', '2023-02-01 15:08:26');
 
 -- --------------------------------------------------------
 
