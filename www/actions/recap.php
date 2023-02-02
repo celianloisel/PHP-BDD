@@ -11,6 +11,15 @@ if (isset($_POST['submit']) && $_POST['submit'] == "Depot") {
     $deposits->currencies_id = $_POST['currency'];
 
     $dbmanager->insert($deposits);
+} elseif (isset($_POST['submit']) && $_POST['submit'] == "Retrait") {
+    $dbmanager = new DbManager($db);
+
+    $withdrawals = new Withdrawals();
+    $withdrawals->user_id = $_SESSION["user_id"];
+    $withdrawals->value = $_POST["retrait"];
+    $withdrawals->currencies_id = $_POST['currency'];
+
+    $dbmanager->insert($withdrawals);
 }
 
 header("Location: /index.php?name=recap");
