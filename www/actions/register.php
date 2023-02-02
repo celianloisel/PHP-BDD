@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/../../src/init.php';
 
-if (!isset($_POST['email'], $_POST['firstname'], $_POST['lastname'] , $_POST['password'], $_POST['cpassword'])) {
+if (!isset($_POST['email'], $_POST['firstname'], $_POST['lastname'], $_POST['password'], $_POST['cpassword'])) {
 	set_errors('Pas de formulaire recu', '/index.php?name=register');
 }
 
@@ -21,8 +21,14 @@ if (empty($_POST['lastname']) || strlen($_POST['lastname']) > 100) {
 if (empty($_POST['password']) || ($_POST['password'] !== $_POST['cpassword'])) {
 	set_errors('Message invalide', '/index.php?name=register');
 }
+$query = $db->prepare('SELECT * FROM users WHERE email = ?');
+$query->execute([$_POST['email']]);
+$query->setFetchMode(PDO::FETCH_ASSOC);
+$user = $query->fetch();
 
-$_POST['password'] = hash('sha256', $_POST['password']);
+if($user !== false){
+	set_errors('Mail déjà existant', '/index.php?name=register');
+}
 
 unset($_POST['cpassword']);
 
@@ -35,17 +41,17 @@ $query->execute(); */
 $dbmanager = new DbManager($db);
 
 $newUser = new Users();
-$newUser -> setFirstname($_POST['firstname']);
-$newUser -> setLastname($_POST['lastname']);
-$newUser -> setEmail($_POST['email']);
-$newUser -> setNumber_phone($_POST['number_phone']);
-$newUser -> setPassword($_POST['password']);
-$newUser -> setStatus(1);
+$newUser->setFirstname($_POST['firstname']);
+$newUser->setLastname($_POST['lastname']);
+$newUser->setEmail($_POST['email']);
+$newUser->setNumber_phone($_POST['number_phone']);
+$newUser->setPassword($_POST['password']);
+$newUser->setStatus(1);
 
-$dbmanager ->insert($newUser);
+$dbmanager->insert($newUser);
 
 
 
 /* $_SESSION['user_id'] = $db->lastInsertId(); */
 
-header('Location: /index.php?name=login');
+/* header('Location: /index.php?name=login'); */

@@ -21,6 +21,7 @@ $query->execute([$_POST['email']]);
 $query->setFetchMode(PDO::FETCH_ASSOC);
 $user = $query->fetch();
 
+
 if ($user['password'] !== $password) {
 	set_errors('Mauvais mot de passe', '/index.php?name=login');
 }else{
