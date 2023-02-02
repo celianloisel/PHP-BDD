@@ -58,8 +58,9 @@ if ($errors !== false) {
 
     <!-- footer -->
     <?php require_once __DIR__ . '/../src/partials/footer.php'; ?>
-
+    <?php if($pageName == 'conversion'){ ?>
     <script src="/../src/assets/js/conversion.js"></script>
+    <?php } ?>
 </body>
 
 </html>
