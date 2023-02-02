@@ -31,8 +31,8 @@ foreach ($results as $r) {
             <p><?= $userData['firstname'] ?> <?= $userData['lastname'] ?> : <?= $r['value'] ?> <?= $currenciesData["name"] ?></p>
         </div>
         <div>
-            <form action="/actions/accept.php" method="post">
-                <input type="text" value="<?= $userData['firstname'] ?> ?>" name="idUser" style="display:none">
+            <form action="/actions/acceptDepot.php" method="post">
+                <input type="text" value="<?= $r['id'] ?>" name="idDepot" style="display:none">
                 <input type="submit" value="Accept">
             </form>
         </div>
