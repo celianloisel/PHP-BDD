@@ -37,6 +37,23 @@ foreach ($results as $r) {
             </form>
         </div>
     </section>
-<?php } ?>
+<?php }
 
 
+$results2 = $dbManager->getAll("withdrawals");
+foreach ($results2 as $r) {
+    $userData = $dbManager->getWhere("users", "id", $r["user_id"]);
+    $currenciesData = $dbManager->getWhere("currencies", "id", $r["currencies_id"]);
+    ?>
+    <section>
+        <div>
+            <p><?= $userData['firstname'] ?> <?= $userData['lastname'] ?> : <?= $r['value'] ?> <?= $currenciesData["name"] ?></p>
+        </div>
+        <div>
+            <form action="/actions/acceptWithdrawals.php" method="post">
+                <input type="text" value="<?= $r['id'] ?>" name="idWithdrawal" style="display:none">
+                <input type="submit" value="Accept">
+            </form>
+        </div>
+    </section>
+<?php }
