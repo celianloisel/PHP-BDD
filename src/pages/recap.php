@@ -4,11 +4,26 @@ $u = $_SESSION['user_id'];
 
 $money = $db->prepare("SELECT value FROM bankaccounts WHERE user_id = $u");
 $money->execute();
-$result = $money->fetchAll();
+$result = $money->fetch();
 
 $string = $result[0][0];
 
-eval("\$array = $string;");
+$array = json_decode($string, true);
+
+
+$createaccountarray = explode(";", $result["value"]);
+$accountarray = array();
+$accountstring = "";
+
+foreach ($createaccountarray as $v) {
+    $tmp = explode(':', $v);
+    if (!$tmp[0]) {
+        $accountarray = null;
+    } else {
+        $accountarray[$tmp[0]] = $tmp[1];
+    }
+}
+
 
 ?>
 
@@ -16,10 +31,15 @@ eval("\$array = $string;");
 
 <h2>Your money:</h2>
 
-<?php foreach ($array as $v => $value){ ?>
+<?php foreach ($accountarray as $v => $value) {
+
+    $dbmanager = new DbManager($db);
+    $i = $dbmanager->getWhere("currencies", "id", $v);
+    $j = $i['name']
+    ?>
 
     <div>
-        <p><?= "$v: $value"; ?></p>
+        <p><?= "$value $j"; ?></p>
     </div>
 
 <?php } ?>
