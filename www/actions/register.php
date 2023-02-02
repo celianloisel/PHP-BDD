@@ -50,8 +50,4 @@ $newUser->setStatus(1);
 
 $dbmanager->insert($newUser);
 
-
-
-/* $_SESSION['user_id'] = $db->lastInsertId(); */
-
-/* header('Location: /index.php?name=login'); */
+header('Location: /index.php?name=login');
