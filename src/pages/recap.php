@@ -2,21 +2,27 @@
 
 $u = $_SESSION['user_id'];
 
-$value = $db->prepare("SELECT value FROM bankaccounts WHERE user_id = $u");
-$value->execute();
-$value->fetch();
-var_dump($value)
+$money = $db->prepare("SELECT value FROM bankaccounts WHERE user_id = $u");
+$money->execute();
+$result = $money->fetchAll();
+
+$string = $result[0][0];
+
+eval("\$array = $string;");
+
 ?>
 
 <h1>My account</h1>
 
-<?php foreach ($value as $v) : ?>
+<h2>Your money:</h2>
+
+<?php foreach ($array as $v => $value){ ?>
 
     <div>
-        <p><?php echo ($v) ?> </p>
+        <p><?= "$v: $value"; ?></p>
     </div>
 
-<?php endforeach; ?>
+<?php } ?>
 
 <form action="/actions/recap.php" method="post">
     <label for="depot">Depot : </label>
