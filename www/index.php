@@ -10,13 +10,15 @@ $pageTitles = [
     '404' => 'Error 404',
     'manage' => 'Manage Users',
     'recap' => 'My Account',
+    'conversion' => 'Convert your money',
+    'transaction' => 'History of your transactions'
 ];
 
 // if we are not connected
 $guest_pages = ['login', 'register']; // add new pages here
 
 // if we are connected
-$loggedin_pages = ['home', 'manage', 'recap']; // or here
+$loggedin_pages = ['home', 'manage', 'recap','conversion','transaction']; // or here
 
 // pages that everyone can see connected or not
 $everyone_pages = []; // or here !
@@ -56,6 +58,8 @@ if ($errors !== false) {
 
     <!-- footer -->
     <?php require_once __DIR__ . '/../src/partials/footer.php'; ?>
+
+    <script src="/../src/assets/js/conversion.js"></script>
 </body>
 
 </html>

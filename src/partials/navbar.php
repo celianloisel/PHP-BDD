@@ -17,6 +17,9 @@
             <li>
                 <a href="?name=transactions">Transactions</a>
             </li>
+            <li>
+                <a href="?name=conversion">Conversion</a>
+            </li>
        <?php } ?>
         <li>
             <a href="?name=home">Home</a>
