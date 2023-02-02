@@ -1,10 +1,10 @@
 <?php
 $users = $db->prepare("SELECT * FROM users WHERE status = 1");
 $users->execute();
-$users->fetch();
+$userResult = $users->fetchAll();
 ?>
 
-<?php foreach ($users as $user): ?>
+<?php foreach ($userResult as $user): ?>
     <section>
         <div>
             <p><?= $user['firstname'] ?> </p>
