@@ -11,7 +11,8 @@
             <p><?= $user['lastname'] ?> </p>      
         </div>
         <div>
-            <form action="/actions/accept.php">
+            <form action="/actions/accept.php" method="post">
+                <input type="text" value="<?= $user['id'] ?>" name="idUser" style="display:none">
                 <input type="submit" value="Accept">
             </form>
         </div>

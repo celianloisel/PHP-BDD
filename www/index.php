@@ -26,6 +26,12 @@ if (isset($_GET['name'])) {
     } elseif ($user_id === false && in_array($_GET['name'], $guest_pages)) {
         $pageName = $_GET['name'];
     }
+} else {
+    if ($user_id === false) {
+        $pageName = 'login';
+    } else {
+        $pageName = 'home';
+    }
 }
 
 $page_title = $pageTitles[$pageName];
@@ -36,14 +42,14 @@ $page_title = $pageTitles[$pageName];
 <?php require_once __DIR__ . '/../src/partials/head.php'; ?>
 
 <body>
-<!-- navbar -->
-<?php require_once __DIR__ . '/../src/partials/navbar.php'; ?>
+    <!-- navbar -->
+    <?php require_once __DIR__ . '/../src/partials/navbar.php'; ?>
 
-<!-- page content -->
-<?php require_once __DIR__ . '/../src/pages/' . $pageName . '.php'; ?>
+    <!-- page content -->
+    <?php require_once __DIR__ . '/../src/pages/' . $pageName . '.php'; ?>
 
-<!-- footer -->
-<?php require_once __DIR__ . '/../src/partials/footer.php'; ?>
+    <!-- footer -->
+    <?php require_once __DIR__ . '/../src/partials/footer.php'; ?>
 </body>
 
 </html>
