@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 01 fév. 2023 à 14:10
+-- Généré le : jeu. 02 fév. 2023 à 16:24
 -- Version du serveur : 5.7.36
 -- Version de PHP : 7.4.26
 
@@ -31,9 +31,22 @@ DROP TABLE IF EXISTS `bankaccounts`;
 CREATE TABLE IF NOT EXISTS `bankaccounts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
-  `value` float NOT NULL,
+  `value` varchar(255) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `bankaccounts`
+--
+
+INSERT INTO `bankaccounts` (`id`, `user_id`, `value`) VALUES
+(1, 5, '[]'),
+(2, 6, '[]'),
+(4, 6, '[]'),
+(5, 6, '[]'),
+(6, 6, '[]'),
+(7, 8, '[]'),
+(8, 7, '[]');
 
 -- --------------------------------------------------------
 
@@ -44,10 +57,20 @@ CREATE TABLE IF NOT EXISTS `bankaccounts` (
 DROP TABLE IF EXISTS `currencies`;
 CREATE TABLE IF NOT EXISTS `currencies` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `taux` float NOT NULL,
+  `devise` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `currencies`
+--
+
+INSERT INTO `currencies` (`id`, `name`, `taux`, `devise`) VALUES
+(1, 'Euro', 0.91, 'euro'),
+(2, 'Dollar', 1, 'dolUs'),
+(3, 'Dollar Canadien', 1.33, 'dolCan');
 
 -- --------------------------------------------------------
 
@@ -57,11 +80,20 @@ CREATE TABLE IF NOT EXISTS `currencies` (
 
 DROP TABLE IF EXISTS `deposits`;
 CREATE TABLE IF NOT EXISTS `deposits` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `value` float NOT NULL,
-  `currencies_id` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `currencies_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `deposits`
+--
+
+INSERT INTO `deposits` (`id`, `user_id`, `value`, `currencies_id`) VALUES
+(1, 6, 60, 1),
+(3, 6, 10, 2);
 
 -- --------------------------------------------------------
 
@@ -77,7 +109,14 @@ CREATE TABLE IF NOT EXISTS `transactions` (
   `currencies_id` int(11) NOT NULL,
   `type` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `transactions`
+--
+
+INSERT INTO `transactions` (`id`, `user_id`, `value`, `currencies_id`, `type`) VALUES
+(1, 6, 60, 1, 'depot');
 
 -- --------------------------------------------------------
 
@@ -97,14 +136,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `register_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `login_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `number_phone`, `password`, `status`, `register_date`, `login_date`) VALUES
-(3, 'Celian', 'Loisel', 'celianloisel@gmail.com', '0661804927', '94e7d3e1e649e684987228c65a30f14dc39be614b9560a487564efbf79022554', 1, '2023-02-01 15:08:26', '2023-02-01 15:08:26');
+(6, 'Celian', 'Loisel', 'celianloisel@gmail.com', '0661804927', 'e4d3462aca45391b6da862a1fb62d37b661c4a6a4272acb3e91fada40d0b7695', 200, '2023-02-02 10:21:00', '2023-02-02 10:21:00'),
+(8, 'test2', 'test2', 'test@test.com2', '00000000002', 'e4d3462aca45391b6da862a1fb62d37b661c4a6a4272acb3e91fada40d0b7695', 10, '2023-02-02 16:15:53', '2023-02-02 16:15:53'),
+(7, 'test', 'test', 'test@test.com', '0000000000', 'e4d3462aca45391b6da862a1fb62d37b661c4a6a4272acb3e91fada40d0b7695', 10, '2023-02-02 16:15:53', '2023-02-02 16:15:53');
 
 -- --------------------------------------------------------
 
