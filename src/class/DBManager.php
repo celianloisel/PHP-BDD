@@ -10,6 +10,24 @@ class DbManager
     }
 
     /**
+     * Récupère un enregistrement dans la base de données en fonction de sa Colonne
+     * @return object Objet de la classe associée à l'enregistrement
+     */
+    public function getAll($tableName)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM $tableName");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+    public function getWhere($tableName, $whereCondition, $where)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM $tableName WHERE $whereCondition = $where");
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
+    /**
      * Récupère un enregistrement d'une table en fonction de son identifiant
      * @param int $id Identifiant de l'enregistrement
      * @param string $className Nom de la classe associée à la table
