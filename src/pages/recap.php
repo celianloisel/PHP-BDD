@@ -1,15 +1,22 @@
 <?php
-$stmt = $db->prepare("SELECT money FROM users WHERE status = 1");
-$stmt->execute();
-$money = $stmt->fetchAll();
+
+$u = $_SESSION['user_id'];
+
+$value = $db->prepare("SELECT value FROM bankaccounts WHERE user_id = $u");
+$value->execute();
+$value->fetch();
+var_dump($value)
 ?>
 
 <h1>My account</h1>
-<ul>
-    <?php foreach ($money as $m) : ?>
-        <li><?= $m['money'] ?></li>
-    <?php endforeach; ?>
-</ul>
+
+<?php foreach ($value as $v) : ?>
+
+    <div>
+        <p><?php echo ($v) ?> </p>
+    </div>
+
+<?php endforeach; ?>
 
 <form action="/actions/recap.php" method="post">
     <label for="depot">Depot : </label>
@@ -25,6 +32,7 @@ $money = $stmt->fetchAll();
     </select>
     <input type="submit" value="Depot" name="submit">
 </form>
+
 <form action="/actions/recap.php" method="post">
     <label for="retrait">Retrait : </label>
     <input type="text" name="retrait" id="retrait">
