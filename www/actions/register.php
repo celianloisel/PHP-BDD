@@ -2,6 +2,8 @@
 
 require_once __DIR__ . '/../../src/init.php';
 
+$errors = get_errors();
+
 if (!isset($_POST['email'], $_POST['firstname'], $_POST['lastname'], $_POST['password'], $_POST['cpassword'])) {
 	set_errors('Pas de formulaire recu', '/index.php?name=register');
 }
@@ -11,15 +13,18 @@ if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) === false) {
 }
 
 if (empty($_POST['firstname']) || strlen($_POST['firstname']) > 100) {
-	set_errors('Fullname invalide', '/index.php?name=register');
+	set_errors('firstanme invalide', '/index.php?name=register');
 }
 
-if (empty($_POST['lastname']) || strlen($_POST['lastname']) > 100) {
-	set_errors('Fullname invalide', '/index.php?name=register');
+if (!preg_match('`[0-9]{10}`',$_POST['number_phone'])) {
+	set_errors('numéro de téléphone invalide', '/index.php?name=register');
+}
+if (empty($_POST['password']) || ($_POST['password'] !== $_POST['cpassword'])) {
+	set_errors('Mot de passe invalide ou les 2 mots de passes ne correspondent pas', '/index.php?name=register');
 }
 
 if (empty($_POST['password']) || ($_POST['password'] !== $_POST['cpassword'])) {
-	set_errors('Message invalide', '/index.php?name=register');
+	set_errors('Mot de passe invalide ou les 2 mots de passes ne correspondent pas', '/index.php?name=register');
 }
 $query = $db->prepare('SELECT * FROM users WHERE email = ?');
 $query->execute([$_POST['email']]);

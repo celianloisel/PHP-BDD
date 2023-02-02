@@ -1,4 +1,9 @@
 <h1>Register Page</h1>
+<?php
+require_once __DIR__ . '/../init.php';
+
+?>
+
 <form action="/actions/register.php" method="post">
     <label for="firstname">Firstname :</label>
     <input type="text" name="firstname" id="firstname">

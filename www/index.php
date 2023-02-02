@@ -45,7 +45,12 @@ $page_title = $pageTitles[$pageName];
 <body>
     <!-- navbar -->
     <?php require_once __DIR__ . '/../src/partials/navbar.php'; ?>
-
+<?php
+    $errors = get_errors();
+if ($errors !== false) {
+	echo '<p>'.$errors.'</p>';
+}
+?>
     <!-- page content -->
     <?php require_once __DIR__ . '/../src/pages/' . $pageName . '.php'; ?>
 

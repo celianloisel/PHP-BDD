@@ -2,6 +2,8 @@
 
 require_once __DIR__ . '/../../src/init.php';
 
+$errors = get_errors();
+
 if (!isset($_POST['email'], $_POST['password'])) {
 	set_errors('Pas de formulaire recu', '/index.php?name=login');
 }
