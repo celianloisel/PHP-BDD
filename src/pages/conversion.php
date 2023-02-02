@@ -9,8 +9,6 @@
         $dbManager = new DbManager($db);
         $results = $dbManager->getAll("currencies");
         foreach ($results as $result) { ?>
-            $myCookie =  $result['taux'];
-            setcookie($myCookie);
             <option value="<?= $result['id'] ?>"><?= $result['name'] ?></option>;
         <?php } ?>
     </select>
@@ -25,4 +23,6 @@
             <option value="<?= $result['id'] ?>"><?= $result['name'] ?></option>;
         <?php } ?>
     </select>
+
+    <input type="submit" value="Convert">
 </form>
