@@ -8,7 +8,8 @@ $pageTitles = [
     'home' => 'Home',
     'contact' => 'Contact Us',
     '404' => 'Error 404',
-    'manage' => 'Manage Users'
+    'manage' => 'Manage Users',
+    'recap' => 'My Account'
 ];
 
 // if we are not connected
