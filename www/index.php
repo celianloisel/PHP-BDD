@@ -16,7 +16,7 @@ $pageTitles = [
 $guest_pages = ['login', 'register']; // add new pages here
 
 // if we are connected
-$loggedin_pages = ['home', 'manage']; // or here
+$loggedin_pages = ['home', 'manage', 'recap']; // or here
 
 // pages that everyone can see connected or not
 $everyone_pages = []; // or here !
