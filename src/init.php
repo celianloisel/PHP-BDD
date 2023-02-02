@@ -10,6 +10,7 @@ require_once __DIR__ . '/class/Users.php';
 require_once __DIR__ . '/class/Deposits.php';
 require_once __DIR__ . '/class/Transaction.php';
 require_once __DIR__ . '/class/Bankaccounts.php';
+require_once __DIR__ . '/class/Withdrawals.php';
 
 require_once __DIR__ . '/class/DbManager.php';
 

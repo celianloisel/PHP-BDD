@@ -9,7 +9,7 @@ $pageTitles = [
     'contact' => 'Contact Us',
     '404' => 'Error 404',
     'manage' => 'Manage Users',
-    'recap' => 'My Account'
+    'recap' => 'My Account',
 ];
 
 // if we are not connected

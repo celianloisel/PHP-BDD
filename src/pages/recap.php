@@ -25,3 +25,17 @@ $money = $stmt->fetchAll();
     </select>
     <input type="submit" value="Depot" name="submit">
 </form>
+<form action="/actions/recap.php" method="post">
+    <label for="retrait">Retrait : </label>
+    <input type="text" name="retrait" id="retrait">
+    <select name="currency">
+        <option disabled selected="selected">--Please choose an option--</option>
+        <?php
+        $dbManager = new DbManager($db);
+        $results = $dbManager->getAll("currencies");
+        foreach ($results as $result) { ?>
+            <option value="<?= $result['id'] ?>"><?= $result['name'] ?></option>;
+        <?php } ?>
+    </select>
+    <input type="submit" value="Retrait" name="submit">
+</form>
