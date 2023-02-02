@@ -24,6 +24,15 @@
             <li>
                 <a href="?name=transactions">Transactions</a>
             </li>
+            <li>
+                <a href="?name=withdrawals">Withdrawals</a>
+            </li>
+            <li>
+                <a href="?name=account_summary">Account Summary</a>
+            </li>
+            <li>
+                <a href="?name=currency_conversion">Account Summary</a>
+            </li>
         <?php }
            
         }
