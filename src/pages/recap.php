@@ -16,7 +16,7 @@ $accountstring = "";
 foreach ($createaccountarray as $v) {
     $tmp = explode(':', $v);
     if (!$tmp[0]) {
-        $accountarray = null;
+        $accountarray = [];
     } else {
         $accountarray[$tmp[0]] = $tmp[1];
         
