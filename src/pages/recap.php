@@ -2,10 +2,12 @@
 
 $u = $_SESSION['user_id'];
 
-$money = $db->prepare("SELECT value FROM bankaccounts WHERE user_id = $u");
-$money->execute();
-$result = $money->fetch();
+//$money = $db->prepare("SELECT value FROM bankaccounts WHERE user_id = $u");
+//$money->execute();
+//$result = $money->fetch();
 
+$dbmanager = new DbManager($db);
+$result = $dbmanager->getWhere("bankaccounts", "user_id", $u);
 
 $createaccountarray = explode(";", $result["value"]);
 $accountarray = array();
@@ -33,7 +35,6 @@ foreach ($createaccountarray as $v) {
     $dbmanager = new DbManager($db);
     $i = $dbmanager->getWhere("currencies", "id", $v);
     $j = $i['name'];
-    var_dump( $v);
     ?>
 
     <div>

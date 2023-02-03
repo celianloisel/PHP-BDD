@@ -34,6 +34,14 @@ class DbManager
         return $stmt->fetch();
     }
 
+
+    public function getAllWhere($tableName, $whereCondition, $where)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM $tableName WHERE $whereCondition = $where");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
     /**
      * Récupère un enregistrement d'une table en fonction de son identifiant
      * @param int $id Identifiant de l'enregistrement
