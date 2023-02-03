@@ -37,7 +37,7 @@ foreach ($createaccountarray as $v) {
 }
 
 if ($accountarray == null) {
-    $accountarray[$_POST['currency']] = $results * -1;
+    $accountarray[$_POST['currency']] = $c * -1;
     $accountstring = implode(';', array_map(
         function ($v, $k) {
             return sprintf("%s:%s", $k, $v);
@@ -47,9 +47,9 @@ if ($accountarray == null) {
     ));
 } else {
     if (array_key_exists($_POST['currency'], $accountarray)) {
-        $accountarray[$_POST['currency']] -= $results;
+        $accountarray[$_POST['currency']] -= $c;
     } else {
-        $accountarray[$_POST['currency']] = $results * -1;
+        $accountarray[$_POST['currency']] = $c * -1;
     }
     $accountstring = implode(';', array_map(
         function ($v, $k) {
@@ -62,7 +62,7 @@ if ($accountarray == null) {
 
 $transaction = new Transactions();
 $transaction->user_id = $_SESSION['user_id'];
-$transaction->value = $results * -1;
+$transaction->value = $c * -1;
 $transaction->currencies_id = $_POST['currency'];
 $transaction->type = "retrait";
 $dbmanager->insert($transaction);
