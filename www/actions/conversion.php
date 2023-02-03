@@ -126,4 +126,4 @@ $bankaccount->user_id = $_SESSION['user_id'];
 $bankaccount->value = $accountstring;
 $dbmanager->update($bankaccount);
 
-?>
+header('Location: /index.php?name=home');
