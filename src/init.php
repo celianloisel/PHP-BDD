@@ -24,4 +24,20 @@ $user = false;
 if ($user_id !== false) {
 	$user = get_user_by_id($user_id);
 	$role=$dbManager->getById_basic('users', $_SESSION['user_id']);
+	$admin=0;
+	$manager=0;
+	$verified=0;
+	$unverified=0;
+	$banned=0;
+	if ($role['status']>200){$admin = $role['status'];}
+	elseif ($role['status']>10) { $manager = $role['status'];}
+	elseif ($role['status']>1) {$verified = $role['status']; }
+	elseif ($role['status']>0) {$unverified = $role['status'];}
+	elseif ($role['status']>(-1)) {$banned = $role['status'];}
 }
+
+
+
+
+
+
