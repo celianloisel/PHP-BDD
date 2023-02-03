@@ -34,7 +34,6 @@ class DbManager
         return $stmt->fetch();
     }
 
-
     public function getAllWhere($tableName, $whereCondition, $where)
     {
         $stmt = $this->db->prepare("SELECT * FROM $tableName WHERE $whereCondition = $where");

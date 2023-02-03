@@ -3,6 +3,12 @@
     <!-- Droits pour managerr -->
         <?php if($user_id !== false){ 
 
+              if ($admin > 200){  ?>
+                <li>
+                    <a href="?name=admin_pannel">Admin Pannel</a>
+                </li>
+             <?php }
+
               if ($manager || $admin > 10){     ?>
         <li>
             <a href="?name=manage">Manage</a>

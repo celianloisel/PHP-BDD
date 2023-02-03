@@ -1,14 +1,18 @@
 <?php
-$users = $db->prepare("SELECT * FROM users WHERE status = 1");
+require_once __DIR__ . '/../class/DbManager.php';
+/* $users = $db->prepare("SELECT * FROM users WHERE status = 1");
 $users->execute();
-$userResult = $users->fetchAll();
+$userResult = $users->fetchAll(); */
+
+$dbmanager = new DbManager($db);
+$userResult = $dbmanager->getAllWhere("users", "status", 1);
+
 ?>
 
 <?php foreach ($userResult as $user): ?>
     <section>
         <div>
-            <p><?= $user['firstname'] ?> </p>
-            <p><?= $user['lastname'] ?> </p>
+            <p><?= $user['firstname'] . " " .$user['lastname'] ?> </p>
         </div>
         <div>
             <form action="/actions/accept.php" method="post">
