@@ -6,10 +6,6 @@ $money = $db->prepare("SELECT value FROM bankaccounts WHERE user_id = $u");
 $money->execute();
 $result = $money->fetch();
 
-$string = $result[0][0];
-
-$array = json_decode($string, true);
-
 
 $createaccountarray = explode(";", $result["value"]);
 $accountarray = array();
@@ -21,6 +17,7 @@ foreach ($createaccountarray as $v) {
         $accountarray = null;
     } else {
         $accountarray[$tmp[0]] = $tmp[1];
+        
     }
 }
 
@@ -35,7 +32,8 @@ foreach ($createaccountarray as $v) {
 
     $dbmanager = new DbManager($db);
     $i = $dbmanager->getWhere("currencies", "id", $v);
-    $j = $i['name']
+    $j = $i['name'];
+    var_dump( $v);
     ?>
 
     <div>
