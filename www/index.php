@@ -11,14 +11,15 @@ $pageTitles = [
     'manage' => 'Manage Users',
     'recap' => 'My Account',
     'conversion' => 'Convert your money',
-    'transactions' => 'History of your transactions'
+    'transactions' => 'History of your transactions',
+    'admin_pannel' => 'Admin Pannel'
 ];
 
 // if we are not connected
 $guest_pages = ['login', 'register']; // add new pages here
 
 // if we are connected
-$loggedin_pages = ['home', 'manage', 'recap', 'conversion', 'transactions']; // or here
+$loggedin_pages = ['admin_pannel','home', 'manage', 'recap', 'conversion', 'transactions']; // or here
 
 // pages that everyone can see connected or not
 $everyone_pages = []; // or here !
