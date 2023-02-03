@@ -6,5 +6,4 @@ class Transactions
     public $value;
     public $currencies_id;
     public $type;
-
 }

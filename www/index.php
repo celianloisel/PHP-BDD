@@ -11,14 +11,14 @@ $pageTitles = [
     'manage' => 'Manage Users',
     'recap' => 'My Account',
     'conversion' => 'Convert your money',
-    'transaction' => 'History of your transactions'
+    'transactions' => 'History of your transactions'
 ];
 
 // if we are not connected
 $guest_pages = ['login', 'register']; // add new pages here
 
 // if we are connected
-$loggedin_pages = ['home', 'manage', 'recap','conversion','transaction']; // or here
+$loggedin_pages = ['home', 'manage', 'recap', 'conversion', 'transactions']; // or here
 
 // pages that everyone can see connected or not
 $everyone_pages = []; // or here !
@@ -45,26 +45,26 @@ $page_title = $pageTitles[$pageName];
 <?php require_once __DIR__ . '/../src/partials/head.php'; ?>
 
 <body>
-    <!-- navbar -->
-    <?php require_once __DIR__ . '/../src/partials/navbar.php'; ?>
+<!-- navbar -->
+<?php require_once __DIR__ . '/../src/partials/navbar.php'; ?>
 <?php
-    $errors = get_errors();
+$errors = get_errors();
 if ($errors !== false) {
-	echo '<p>'.$errors.'</p>';
+    echo '<p>' . $errors . '</p>';
 }
 ?>
-    <!-- page content -->
-    <?php require_once __DIR__ . '/../src/pages/' . $pageName . '.php'; ?>
+<!-- page content -->
+<?php require_once __DIR__ . '/../src/pages/' . $pageName . '.php'; ?>
 
-    <!-- footer -->
-    <?php require_once __DIR__ . '/../src/partials/footer.php'; ?>
-    <?php if($pageName == 'conversion'){ ?>
+<!-- footer -->
+<?php require_once __DIR__ . '/../src/partials/footer.php'; ?>
+<?php if ($pageName == 'conversion') { ?>
     <script>
-        <?php 
+        <?php
         require_once __DIR__ . "/../src/assets/js/conversion.js";
         ?>
     </script>
-    <?php } ?>
+<?php } ?>
 </body>
 
 </html>

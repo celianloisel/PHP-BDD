@@ -9,6 +9,13 @@ class DbManager
         $this->db = $db;
     }
 
+    public function getAllDescendingWhere($tableName, $whereCondition, $where)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM $tableName WHERE $whereCondition = $where ORDER BY id ASC");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
     /**
      * Récupère un enregistrement dans la base de données en fonction de sa Colonne
      * @return object Objet de la classe associée à l'enregistrement
