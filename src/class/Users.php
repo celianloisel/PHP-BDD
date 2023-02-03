@@ -2,6 +2,7 @@
 
 class Users extends DbObject {
 
+    public $id;
     public $firstname;
     public $lastname;
 	public $email;
