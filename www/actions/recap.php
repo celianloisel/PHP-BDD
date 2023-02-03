@@ -64,7 +64,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == "Depot") {
 
     $transaction = new Transactions();
     $transaction->user_id = $_SESSION['user_id'];
-    $transaction->value = $_POST['send'];
+    $transaction->value = $_POST['send'] * -1;
     $transaction->currencies_id = $_POST['currency'];
     $transaction->type = "retrait";
     $dbmanager->insert($transaction);
