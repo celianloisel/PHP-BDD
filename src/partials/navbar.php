@@ -3,14 +3,14 @@
     <!-- Droits pour managerr -->
         <?php if($user_id !== false){ 
 
-              if ($manager > 10){     ?>
+              if ($banned || $unverified || $verified || $manager || $admin > 10){     ?>
         <li>
             <a href="?name=manage">Manage</a>
         </li>
         <?php }
 
         // Droits pour membres vérifiés 
-        if ($verified || $manager > 1) { ?>
+        if ($banned || $unverified || $verified || $manager || $admin > 1) { ?>
             <li>
                 <a href="?name=recap">Recap</a>
             </li>
